@@ -11,4 +11,31 @@
     android:gravity="center"
     tools:context=".LanderActivity">
 
+    <cs193a.stanford.edu.lunarlander.LanderView
+        android:id="@+id/playingCanvas"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:onClick="startClick"
+            android:text="Start"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <Button
+            android:onClick="stopClick"
+            android:text="Stop"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
 </LinearLayout>
