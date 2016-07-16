@@ -5,21 +5,32 @@
 
 package cs193a.stanford.edu.lunarlander;
 
+import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 
 import stanford.androidlib.*;
 
-public class LanderActivity extends SimpleActivity {
+public class LanderActivity extends Activity {
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        /*this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);      //Remove notification bar
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);       //Remove title bar*/
+    protected void onCreate(Bundle savedInstanceState) {      //Remove title bar
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(
+                WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //setFullScreenMode(true);
+        //getActionBar().hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lander);
+
+        LanderView canvas = (LanderView) findViewById(R.id.playingCanvas);
+
+
     }
 
     public void startClick(View view) {
@@ -30,6 +41,19 @@ public class LanderActivity extends SimpleActivity {
 
     public void stopClick(View view) {
         LanderView canvas = (LanderView) findViewById(R.id.playingCanvas);
-        canvas.stopGame();
+        canvas.gameOver();
+    }
+
+    public void pauseClick(View view) {
+        LanderView canvas = (LanderView) findViewById(R.id.playingCanvas);
+        Button pause = (Button) findViewById(R.id.pauseButton);
+
+        /*if(canvas.isPaused()) {
+            canvas.resumeGame();
+            pause.setText("Pause");
+        } else {
+            canvas.pauseGame();
+            pause.setText("Resume");
+        }*/
     }
 }
